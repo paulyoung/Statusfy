@@ -1,0 +1,482 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2C87975018FF06E600AE2A45 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C87974F18FF06E600AE2A45 /* Cocoa.framework */; };
+		2C87975A18FF06E600AE2A45 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C87975818FF06E600AE2A45 /* InfoPlist.strings */; };
+		2C87975C18FF06E600AE2A45 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C87975B18FF06E600AE2A45 /* main.m */; };
+		2C87976018FF06E600AE2A45 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C87975E18FF06E600AE2A45 /* Credits.rtf */; };
+		2C87976318FF06E600AE2A45 /* SFYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C87976218FF06E600AE2A45 /* SFYAppDelegate.m */; };
+		2C87976618FF06E600AE2A45 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C87976418FF06E600AE2A45 /* MainMenu.xib */; };
+		2C87976818FF06E600AE2A45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C87976718FF06E600AE2A45 /* Images.xcassets */; };
+		2C87976F18FF06E600AE2A45 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C87976E18FF06E600AE2A45 /* XCTest.framework */; };
+		2C87977018FF06E700AE2A45 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C87974F18FF06E600AE2A45 /* Cocoa.framework */; };
+		2C87977818FF06E700AE2A45 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C87977618FF06E700AE2A45 /* InfoPlist.strings */; };
+		2C87977A18FF06E700AE2A45 /* StatusfyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C87977918FF06E700AE2A45 /* StatusfyTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2C87977118FF06E700AE2A45 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C87974418FF06E600AE2A45 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C87974B18FF06E600AE2A45;
+			remoteInfo = Statusfy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2C87974C18FF06E600AE2A45 /* Statusfy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Statusfy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C87974F18FF06E600AE2A45 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		2C87975218FF06E600AE2A45 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		2C87975318FF06E600AE2A45 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		2C87975418FF06E600AE2A45 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2C87975718FF06E600AE2A45 /* Statusfy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Statusfy-Info.plist"; sourceTree = "<group>"; };
+		2C87975918FF06E600AE2A45 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2C87975B18FF06E600AE2A45 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2C87975D18FF06E600AE2A45 /* Statusfy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Statusfy-Prefix.pch"; sourceTree = "<group>"; };
+		2C87975F18FF06E600AE2A45 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		2C87976118FF06E600AE2A45 /* SFYAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFYAppDelegate.h; sourceTree = "<group>"; };
+		2C87976218FF06E600AE2A45 /* SFYAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFYAppDelegate.m; sourceTree = "<group>"; };
+		2C87976518FF06E600AE2A45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		2C87976718FF06E600AE2A45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2C87976D18FF06E600AE2A45 /* StatusfyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StatusfyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C87976E18FF06E600AE2A45 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		2C87977518FF06E700AE2A45 /* StatusfyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StatusfyTests-Info.plist"; sourceTree = "<group>"; };
+		2C87977718FF06E700AE2A45 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2C87977918FF06E700AE2A45 /* StatusfyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatusfyTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2C87974918FF06E600AE2A45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C87975018FF06E600AE2A45 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C87976A18FF06E600AE2A45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C87977018FF06E700AE2A45 /* Cocoa.framework in Frameworks */,
+				2C87976F18FF06E600AE2A45 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2C87974318FF06E600AE2A45 = {
+			isa = PBXGroup;
+			children = (
+				2C87975518FF06E600AE2A45 /* Statusfy */,
+				2C87977318FF06E700AE2A45 /* StatusfyTests */,
+				2C87974E18FF06E600AE2A45 /* Frameworks */,
+				2C87974D18FF06E600AE2A45 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2C87974D18FF06E600AE2A45 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C87974C18FF06E600AE2A45 /* Statusfy.app */,
+				2C87976D18FF06E600AE2A45 /* StatusfyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C87974E18FF06E600AE2A45 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C87974F18FF06E600AE2A45 /* Cocoa.framework */,
+				2C87976E18FF06E600AE2A45 /* XCTest.framework */,
+				2C87975118FF06E600AE2A45 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2C87975118FF06E600AE2A45 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C87975218FF06E600AE2A45 /* AppKit.framework */,
+				2C87975318FF06E600AE2A45 /* CoreData.framework */,
+				2C87975418FF06E600AE2A45 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		2C87975518FF06E600AE2A45 /* Statusfy */ = {
+			isa = PBXGroup;
+			children = (
+				2C87976118FF06E600AE2A45 /* SFYAppDelegate.h */,
+				2C87976218FF06E600AE2A45 /* SFYAppDelegate.m */,
+				2C87976418FF06E600AE2A45 /* MainMenu.xib */,
+				2C87976718FF06E600AE2A45 /* Images.xcassets */,
+				2C87975618FF06E600AE2A45 /* Supporting Files */,
+			);
+			path = Statusfy;
+			sourceTree = "<group>";
+		};
+		2C87975618FF06E600AE2A45 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2C87975718FF06E600AE2A45 /* Statusfy-Info.plist */,
+				2C87975818FF06E600AE2A45 /* InfoPlist.strings */,
+				2C87975B18FF06E600AE2A45 /* main.m */,
+				2C87975D18FF06E600AE2A45 /* Statusfy-Prefix.pch */,
+				2C87975E18FF06E600AE2A45 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2C87977318FF06E700AE2A45 /* StatusfyTests */ = {
+			isa = PBXGroup;
+			children = (
+				2C87977918FF06E700AE2A45 /* StatusfyTests.m */,
+				2C87977418FF06E700AE2A45 /* Supporting Files */,
+			);
+			path = StatusfyTests;
+			sourceTree = "<group>";
+		};
+		2C87977418FF06E700AE2A45 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2C87977518FF06E700AE2A45 /* StatusfyTests-Info.plist */,
+				2C87977618FF06E700AE2A45 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2C87974B18FF06E600AE2A45 /* Statusfy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C87977D18FF06E700AE2A45 /* Build configuration list for PBXNativeTarget "Statusfy" */;
+			buildPhases = (
+				2C87974818FF06E600AE2A45 /* Sources */,
+				2C87974918FF06E600AE2A45 /* Frameworks */,
+				2C87974A18FF06E600AE2A45 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Statusfy;
+			productName = Statusfy;
+			productReference = 2C87974C18FF06E600AE2A45 /* Statusfy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2C87976C18FF06E600AE2A45 /* StatusfyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C87978018FF06E700AE2A45 /* Build configuration list for PBXNativeTarget "StatusfyTests" */;
+			buildPhases = (
+				2C87976918FF06E600AE2A45 /* Sources */,
+				2C87976A18FF06E600AE2A45 /* Frameworks */,
+				2C87976B18FF06E600AE2A45 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C87977218FF06E700AE2A45 /* PBXTargetDependency */,
+			);
+			name = StatusfyTests;
+			productName = StatusfyTests;
+			productReference = 2C87976D18FF06E600AE2A45 /* StatusfyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2C87974418FF06E600AE2A45 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SFY;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Paul Young";
+				TargetAttributes = {
+					2C87976C18FF06E600AE2A45 = {
+						TestTargetID = 2C87974B18FF06E600AE2A45;
+					};
+				};
+			};
+			buildConfigurationList = 2C87974718FF06E600AE2A45 /* Build configuration list for PBXProject "Statusfy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2C87974318FF06E600AE2A45;
+			productRefGroup = 2C87974D18FF06E600AE2A45 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2C87974B18FF06E600AE2A45 /* Statusfy */,
+				2C87976C18FF06E600AE2A45 /* StatusfyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2C87974A18FF06E600AE2A45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C87975A18FF06E600AE2A45 /* InfoPlist.strings in Resources */,
+				2C87976818FF06E600AE2A45 /* Images.xcassets in Resources */,
+				2C87976018FF06E600AE2A45 /* Credits.rtf in Resources */,
+				2C87976618FF06E600AE2A45 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C87976B18FF06E600AE2A45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C87977818FF06E700AE2A45 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2C87974818FF06E600AE2A45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C87975C18FF06E600AE2A45 /* main.m in Sources */,
+				2C87976318FF06E600AE2A45 /* SFYAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C87976918FF06E600AE2A45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C87977A18FF06E700AE2A45 /* StatusfyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2C87977218FF06E700AE2A45 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C87974B18FF06E600AE2A45 /* Statusfy */;
+			targetProxy = 2C87977118FF06E700AE2A45 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2C87975818FF06E600AE2A45 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C87975918FF06E600AE2A45 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2C87975E18FF06E600AE2A45 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C87975F18FF06E600AE2A45 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		2C87976418FF06E600AE2A45 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C87976518FF06E600AE2A45 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		2C87977618FF06E700AE2A45 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C87977718FF06E700AE2A45 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2C87977B18FF06E700AE2A45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		2C87977C18FF06E700AE2A45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		2C87977E18FF06E700AE2A45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Statusfy/Statusfy-Prefix.pch";
+				INFOPLIST_FILE = "Statusfy/Statusfy-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		2C87977F18FF06E700AE2A45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Statusfy/Statusfy-Prefix.pch";
+				INFOPLIST_FILE = "Statusfy/Statusfy-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		2C87978118FF06E700AE2A45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Statusfy.app/Contents/MacOS/Statusfy";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Statusfy/Statusfy-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "StatusfyTests/StatusfyTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		2C87978218FF06E700AE2A45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Statusfy.app/Contents/MacOS/Statusfy";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Statusfy/Statusfy-Prefix.pch";
+				INFOPLIST_FILE = "StatusfyTests/StatusfyTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2C87974718FF06E600AE2A45 /* Build configuration list for PBXProject "Statusfy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C87977B18FF06E700AE2A45 /* Debug */,
+				2C87977C18FF06E700AE2A45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C87977D18FF06E700AE2A45 /* Build configuration list for PBXNativeTarget "Statusfy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C87977E18FF06E700AE2A45 /* Debug */,
+				2C87977F18FF06E700AE2A45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2C87978018FF06E700AE2A45 /* Build configuration list for PBXNativeTarget "StatusfyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C87978118FF06E700AE2A45 /* Debug */,
+				2C87978218FF06E700AE2A45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2C87974418FF06E600AE2A45 /* Project object */;
+}

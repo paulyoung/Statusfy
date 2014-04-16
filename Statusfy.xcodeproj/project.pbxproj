@@ -347,6 +347,11 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+					"-Werror",
+				);
 			};
 			name = Debug;
 		};
@@ -379,6 +384,11 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+					"-Werror",
+				);
 			};
 			name = Release;
 		};

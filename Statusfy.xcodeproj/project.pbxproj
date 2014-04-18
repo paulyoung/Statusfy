@@ -477,6 +477,7 @@
 				2C87977F18FF06E700AE2A45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C87978018FF06E700AE2A45 /* Build configuration list for PBXNativeTarget "StatusfyTests" */ = {
 			isa = XCConfigurationList;
@@ -485,6 +486,7 @@
 				2C87978218FF06E700AE2A45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -41,7 +41,13 @@
     NSDictionary *artistNameError;
     NSString *artistName = [[artistNameScript executeAndReturnError:&artistNameError] stringValue];
     
-    self.statusItem.title = [NSString stringWithFormat:@"%@ - %@", trackName, artistName];
+    NSString *titleText = NSLocalizedString(@"Statusfy", nil);
+    
+    if (trackName && artistName) {
+        titleText = [NSString stringWithFormat:@"%@ - %@", trackName, artistName];
+    }
+    
+    self.statusItem.title = titleText;
 }
 
 - (void)quit

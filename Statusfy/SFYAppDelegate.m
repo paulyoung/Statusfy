@@ -8,11 +8,45 @@
 
 #import "SFYAppDelegate.h"
 
+
+@interface SFYAppDelegate ()
+
+@property (nonatomic, strong) NSStatusItem *statusItem;
+
+@end
+
+
 @implementation SFYAppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+- (void)applicationDidFinishLaunching:(NSNotification * __unused)aNotification
 {
-    // Insert code here to initialize your application
+    self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+    self.statusItem.highlightMode = YES;
+    
+    [self setStatusItemTitle];
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setStatusItemTitle) userInfo:nil repeats:YES];
+    
+    NSMenu *menu = [[NSMenu alloc] initWithTitle:@""];
+    [menu addItemWithTitle:NSLocalizedString(@"Quit", nil) action:@selector(quit) keyEquivalent:@"q"];
+    [self.statusItem setMenu:menu];
+}
+
+- (void)setStatusItemTitle
+{
+    NSAppleScript *trackNameScript = [[NSAppleScript alloc] initWithSource:@"tell application \"Spotify\" to get name of current track"];
+    NSDictionary *trackNameError;
+    NSString *trackName = [[trackNameScript executeAndReturnError:&trackNameError] stringValue];
+    
+    NSAppleScript *artistNameScript = [[NSAppleScript alloc] initWithSource:@"tell application \"Spotify\" to get artist of current track"];
+    NSDictionary *artistNameError;
+    NSString *artistName = [[artistNameScript executeAndReturnError:&artistNameError] stringValue];
+    
+    self.statusItem.title = [NSString stringWithFormat:@"%@ - %@", trackName, artistName];
+}
+
+- (void)quit
+{
+    [[NSApplication sharedApplication] terminate:self];
 }
 
 @end

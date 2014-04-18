@@ -33,11 +33,11 @@
 
 - (void)setStatusItemTitle
 {
-    NSAppleScript *trackNameScript = [[NSAppleScript alloc] initWithSource:@"tell application \"Spotify\" to get name of current track"];
+    NSAppleScript *trackNameScript = [[NSAppleScript alloc] initWithSource:@"if application \"Spotify\" is running then tell application \"Spotify\" to get name of current track"];
     NSDictionary *trackNameError;
     NSString *trackName = [[trackNameScript executeAndReturnError:&trackNameError] stringValue];
     
-    NSAppleScript *artistNameScript = [[NSAppleScript alloc] initWithSource:@"tell application \"Spotify\" to get artist of current track"];
+    NSAppleScript *artistNameScript = [[NSAppleScript alloc] initWithSource:@"if application \"Spotify\" is running then tell application \"Spotify\" to get artist of current track"];
     NSDictionary *artistNameError;
     NSString *artistName = [[artistNameScript executeAndReturnError:&artistNameError] stringValue];
     

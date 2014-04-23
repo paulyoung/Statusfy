@@ -33,18 +33,25 @@
 
 - (void)setStatusItemTitle
 {
-    NSAppleScript *trackNameScript = [[NSAppleScript alloc] initWithSource:@"if application \"Spotify\" is running then tell application \"Spotify\" to get name of current track"];
-    NSDictionary *trackNameError;
-    NSString *trackName = [[trackNameScript executeAndReturnError:&trackNameError] stringValue];
+    NSAppleScript *runningScript = [[NSAppleScript alloc] initWithSource:@"get running of application \"Spotify\""];
+    NSDictionary *runningError;
+    BOOL running = [[runningScript executeAndReturnError:&runningError] booleanValue];
     
-    NSAppleScript *artistNameScript = [[NSAppleScript alloc] initWithSource:@"if application \"Spotify\" is running then tell application \"Spotify\" to get artist of current track"];
-    NSDictionary *artistNameError;
-    NSString *artistName = [[artistNameScript executeAndReturnError:&artistNameError] stringValue];
+    NSString *titleText = nil;
     
-    NSString *titleText = NSLocalizedString(@"Statusfy", nil);
-    
-    if (trackName && artistName) {
+    if (running) {
+        NSAppleScript *trackNameScript = [[NSAppleScript alloc] initWithSource:@"tell application \"Spotify\" to get name of current track"];
+        NSDictionary *trackNameError;
+        NSString *trackName = [[trackNameScript executeAndReturnError:&trackNameError] stringValue];
+        
+        NSAppleScript *artistNameScript = [[NSAppleScript alloc] initWithSource:@"tell application \"Spotify\" to get artist of current track"];
+        NSDictionary *artistNameError;
+        NSString *artistName = [[artistNameScript executeAndReturnError:&artistNameError] stringValue];
+        
         titleText = [NSString stringWithFormat:@"%@ - %@", trackName, artistName];
+    }
+    else {
+        titleText = NSLocalizedString(@"Statusfy", nil);
     }
     
     self.statusItem.title = titleText;

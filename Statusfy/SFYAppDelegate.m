@@ -9,8 +9,12 @@
 #import "SFYAppDelegate.h"
 
 
+static NSString * const SFYPlayerStatePreferenceKey = @"ShowPlayerState";
+
+
 @interface SFYAppDelegate ()
 
+@property (nonatomic, strong) NSMenuItem *playerStateMenuItem;
 @property (nonatomic, strong) NSStatusItem *statusItem;
 
 @end
@@ -25,43 +29,35 @@
     
     NSMenu *menu = [[NSMenu alloc] initWithTitle:@""];
     
+    self.playerStateMenuItem = [[NSMenuItem alloc] initWithTitle:[self determinePlayerStateMenuItemTitle] action:@selector(togglePlayerStateVisibility) keyEquivalent:@""];
+    
+    [menu addItem:self.playerStateMenuItem];
+    [menu addItemWithTitle:NSLocalizedString(@"Quit", nil) action:@selector(quit) keyEquivalent:@"q"];
+
+    [self.statusItem setMenu:menu];
+    
     [self setStatusItemTitle];
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setStatusItemTitle) userInfo:nil repeats:YES];
-    
-    [menu addItemWithTitle:NSLocalizedString(@"Quit", nil) action:@selector(quit) keyEquivalent:@"q"];
-    [self.statusItem setMenu:menu];
 }
+
+
+#pragma mark - Setting title text
 
 - (void)setStatusItemTitle
 {
-    NSAppleScript *runningScript = [[NSAppleScript alloc] initWithSource:@"get running of application \"Spotify\""];
-    NSDictionary *runningError;
-    BOOL running = [[runningScript executeAndReturnError:&runningError] booleanValue];
+    NSString *trackName = [[self executeAppleScript:@"get name of current track"] stringValue];
+    NSString *artistName = [[self executeAppleScript:@"get artist of current track"] stringValue];
     
-    if (running) {
-        NSString *titleText = nil;
+    if (trackName && artistName) {
+        NSString *titleText = [NSString stringWithFormat:@"%@ - %@", trackName, artistName];
         
-        NSString *trackName = [[self executeApplescript:@"get name of current track"] stringValue];
-        NSString *artistName = [[self executeApplescript:@"get artist of current track"] stringValue];
-        
-        NSString *playerStateConstant = [[self executeApplescript:@"get player state"] stringValue];
-        NSString *playerState = nil;
-        
-        if ([playerStateConstant isEqualToString:@"kPSP"]) {
-            playerState = NSLocalizedString(@"Playing", nil);
-        }
-        else if ([playerStateConstant isEqualToString:@"kPSp"]) {
-            playerState = NSLocalizedString(@"Paused", nil);
-        }
-        else {
-            playerState = NSLocalizedString(@"Stopped", nil);
+        if ([self getPlayerStateVisibility]) {
+            NSString *playerState = [self determinePlayerStateText];
+            titleText = [NSString stringWithFormat:@"%@ (%@)", titleText, playerState];
         }
         
-        if (trackName && artistName && playerState) {
-            titleText = [NSString stringWithFormat:@"%@ - %@ (%@)", trackName, artistName, playerState];
-            self.statusItem.image = nil;
-            self.statusItem.title = titleText;
-        }
+        self.statusItem.image = nil;
+        self.statusItem.title = titleText;
     }
     else {
         self.statusItem.image = [NSImage imageNamed:@"status_icon"];
@@ -69,13 +65,61 @@
     }
 }
 
-- (NSAppleEventDescriptor *)executeApplescript:(NSString *)command
+
+#pragma mark - Executing AppleScript
+
+- (NSAppleEventDescriptor *)executeAppleScript:(NSString *)command
 {
     command = [NSString stringWithFormat:@"if application \"Spotify\" is running then tell application \"Spotify\" to %@", command];
-    NSAppleScript *applescript = [[NSAppleScript alloc] initWithSource:command];
-    NSAppleEventDescriptor *eventDescriptor = [applescript executeAndReturnError:NULL];
+    NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:command];
+    NSAppleEventDescriptor *eventDescriptor = [appleScript executeAndReturnError:NULL];
     return eventDescriptor;
 }
+
+
+#pragma mark - Player state
+
+- (BOOL)getPlayerStateVisibility
+{
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:SFYPlayerStatePreferenceKey] boolValue];
+}
+
+- (void)setPlayerStateVisibility:(BOOL)visible
+{
+    [[NSUserDefaults standardUserDefaults] setObject:@(visible) forKey:SFYPlayerStatePreferenceKey];
+}
+
+- (void)togglePlayerStateVisibility
+{
+    [self setPlayerStateVisibility:![self getPlayerStateVisibility]];
+    self.playerStateMenuItem.title = [self determinePlayerStateMenuItemTitle];
+}
+
+- (NSString *)determinePlayerStateMenuItemTitle
+{
+    return [self getPlayerStateVisibility] ? NSLocalizedString(@"Hide player state", nil) : NSLocalizedString(@"Show player state", nil);
+}
+
+- (NSString *)determinePlayerStateText
+{
+    NSString *playerStateText = nil;
+    NSString *playerStateConstant = [[self executeAppleScript:@"get player state"] stringValue];
+    
+    if ([playerStateConstant isEqualToString:@"kPSP"]) {
+        playerStateText = NSLocalizedString(@"Playing", nil);
+    }
+    else if ([playerStateConstant isEqualToString:@"kPSp"]) {
+        playerStateText = NSLocalizedString(@"Paused", nil);
+    }
+    else {
+        playerStateText = NSLocalizedString(@"Stopped", nil);
+    }
+    
+    return playerStateText;
+}
+
+
+#pragma mark - Quit
 
 - (void)quit
 {

@@ -81,12 +81,12 @@ static NSString * const SFYPlayerStatePreferenceKey = @"ShowPlayerState";
 
 - (BOOL)getPlayerStateVisibility
 {
-    return [[[NSUserDefaults standardUserDefaults] objectForKey:SFYPlayerStatePreferenceKey] boolValue];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:SFYPlayerStatePreferenceKey];
 }
 
 - (void)setPlayerStateVisibility:(BOOL)visible
 {
-    [[NSUserDefaults standardUserDefaults] setObject:@(visible) forKey:SFYPlayerStatePreferenceKey];
+    [[NSUserDefaults standardUserDefaults] setBool:visible forKey:SFYPlayerStatePreferenceKey];
 }
 
 - (void)togglePlayerStateVisibility

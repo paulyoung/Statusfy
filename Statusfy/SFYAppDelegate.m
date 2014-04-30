@@ -40,18 +40,10 @@
     BOOL running = [[runningScript executeAndReturnError:&runningError] booleanValue];
     
     if (running) {
-        NSAppleScript *trackNameScript = [[NSAppleScript alloc] initWithSource:@"if application \"Spotify\" is running then tell application \"Spotify\" to get name of current track"];
-        NSDictionary *trackNameError;
-        NSString *trackName = [[trackNameScript executeAndReturnError:&trackNameError] stringValue];
+        NSString *trackName = [[self executeApplescript:@"get name of current track"] stringValue];
+        NSString *artistName = [[self executeApplescript:@"get artist of current track"] stringValue];
         
-        NSAppleScript *artistNameScript = [[NSAppleScript alloc] initWithSource:@"if application \"Spotify\" is running then tell application \"Spotify\" to get artist of current track"];
-        NSDictionary *artistNameError;
-        NSString *artistName = [[artistNameScript executeAndReturnError:&artistNameError] stringValue];
-        
-        NSAppleScript *playerStateScript = [[NSAppleScript alloc] initWithSource:@"if application \"Spotify\" is running then tell application \"Spotify\" to get player state"];
-        NSDictionary *playerStateError;
-        NSString *playerStateConstant = [[playerStateScript executeAndReturnError:&playerStateError] stringValue];
-        
+        NSString *playerStateConstant = [[self executeApplescript:@"get player state"] stringValue];
         NSString *playerState = nil;
         
         if ([playerStateConstant isEqualToString:@"kPSP"]) {
@@ -70,6 +62,14 @@
     }
     
     self.statusItem.title = titleText;
+}
+
+- (NSAppleEventDescriptor *)executeApplescript:(NSString *)command
+{
+    command = [NSString stringWithFormat:@"if application \"Spotify\" is running then tell application \"Spotify\" to %@", command];
+    NSAppleScript *applescript = [[NSAppleScript alloc] initWithSource:command];
+    NSAppleEventDescriptor *eventDescriptor = [applescript executeAndReturnError:NULL];
+    return eventDescriptor;
 }
 
 - (void)quit

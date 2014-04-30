@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C1A3402191168C300D631C2 /* status_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C1A3400191168C300D631C2 /* status_icon.png */; };
+		2C1A3403191168C300D631C2 /* status_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C1A3401191168C300D631C2 /* status_icon@2x.png */; };
 		2C87975018FF06E600AE2A45 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C87974F18FF06E600AE2A45 /* Cocoa.framework */; };
 		2C87975A18FF06E600AE2A45 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C87975818FF06E600AE2A45 /* InfoPlist.strings */; };
 		2C87975C18FF06E600AE2A45 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C87975B18FF06E600AE2A45 /* main.m */; };
@@ -31,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C1A3400191168C300D631C2 /* status_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_icon.png; sourceTree = "<group>"; };
+		2C1A3401191168C300D631C2 /* status_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status_icon@2x.png"; sourceTree = "<group>"; };
 		2C87974C18FF06E600AE2A45 /* Statusfy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Statusfy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C87974F18FF06E600AE2A45 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2C87975218FF06E600AE2A45 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -127,6 +131,8 @@
 		2C87975618FF06E600AE2A45 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2C1A3400191168C300D631C2 /* status_icon.png */,
+				2C1A3401191168C300D631C2 /* status_icon@2x.png */,
 				2C87975718FF06E600AE2A45 /* Statusfy-Info.plist */,
 				2C87975818FF06E600AE2A45 /* InfoPlist.strings */,
 				2C87975B18FF06E600AE2A45 /* main.m */,
@@ -234,7 +240,9 @@
 				2C87975A18FF06E600AE2A45 /* InfoPlist.strings in Resources */,
 				2C87976818FF06E600AE2A45 /* Images.xcassets in Resources */,
 				2C87976018FF06E600AE2A45 /* Credits.rtf in Resources */,
+				2C1A3402191168C300D631C2 /* status_icon.png in Resources */,
 				2C87976618FF06E600AE2A45 /* MainMenu.xib in Resources */,
+				2C1A3403191168C300D631C2 /* status_icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,23 +23,24 @@
     self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     self.statusItem.highlightMode = YES;
     
+    NSMenu *menu = [[NSMenu alloc] initWithTitle:@""];
+    
     [self setStatusItemTitle];
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setStatusItemTitle) userInfo:nil repeats:YES];
     
-    NSMenu *menu = [[NSMenu alloc] initWithTitle:@""];
     [menu addItemWithTitle:NSLocalizedString(@"Quit", nil) action:@selector(quit) keyEquivalent:@"q"];
     [self.statusItem setMenu:menu];
 }
 
 - (void)setStatusItemTitle
 {
-    NSString *titleText = NSLocalizedString(@"Statusfy (Spotify not running)", nil);
-    
     NSAppleScript *runningScript = [[NSAppleScript alloc] initWithSource:@"get running of application \"Spotify\""];
     NSDictionary *runningError;
     BOOL running = [[runningScript executeAndReturnError:&runningError] booleanValue];
     
     if (running) {
+        NSString *titleText = nil;
+        
         NSString *trackName = [[self executeApplescript:@"get name of current track"] stringValue];
         NSString *artistName = [[self executeApplescript:@"get artist of current track"] stringValue];
         
@@ -56,12 +57,16 @@
             playerState = NSLocalizedString(@"Stopped", nil);
         }
         
-        if (trackName && artistName) {
+        if (trackName && artistName && playerState) {
             titleText = [NSString stringWithFormat:@"%@ - %@ (%@)", trackName, artistName, playerState];
+            self.statusItem.image = nil;
+            self.statusItem.title = titleText;
         }
     }
-    
-    self.statusItem.title = titleText;
+    else {
+        self.statusItem.image = [NSImage imageNamed:@"status_icon"];
+        self.statusItem.title = nil;
+    }
 }
 
 - (NSAppleEventDescriptor *)executeApplescript:(NSString *)command

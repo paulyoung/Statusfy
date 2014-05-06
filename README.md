@@ -1,7 +1,7 @@
 Statusfy
 ========
 
-<img src="https://raw.github.com/paulyoung/Statusfy/master/Statusfy/Images.xcassets/AppIcon.appiconset/icon_128x128.png" alt="Icon" width="128" height="128" />
+<img src="https://d13yacurqjgara.cloudfront.net/users/6536/screenshots/1532570/statusfy.png" alt="Icon" width="400" height="300" />
 
 Spotify in your status bar.
 

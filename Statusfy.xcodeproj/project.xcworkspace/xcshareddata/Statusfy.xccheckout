@@ -10,29 +10,29 @@
 	<string>Statusfy</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>83AF4A02-D562-4B08-8383-CD08829312C4</key>
-		<string>ssh://github.com/paulyoung/Statusfy.git</string>
+		<key>62A427AD95A5799EE9578E10B31493898DB61DBF</key>
+		<string>github.com:paulyoung/Statusfy.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Statusfy.xcodeproj/project.xcworkspace</string>
+	<string>Statusfy.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>83AF4A02-D562-4B08-8383-CD08829312C4</key>
+		<key>62A427AD95A5799EE9578E10B31493898DB61DBF</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/paulyoung/Statusfy.git</string>
+	<string>github.com:paulyoung/Statusfy.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>83AF4A02-D562-4B08-8383-CD08829312C4</string>
+	<string>62A427AD95A5799EE9578E10B31493898DB61DBF</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>83AF4A02-D562-4B08-8383-CD08829312C4</string>
+			<string>62A427AD95A5799EE9578E10B31493898DB61DBF</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Statusfy</string>
 		</dict>

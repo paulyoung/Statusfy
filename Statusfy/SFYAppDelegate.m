@@ -60,7 +60,9 @@ static NSString * const SFYPlayerStatePreferenceKey = @"ShowPlayerState";
         self.statusItem.title = titleText;
     }
     else {
-        self.statusItem.image = [NSImage imageNamed:@"status_icon"];
+        NSImage *image = [NSImage imageNamed:@"status_icon"];
+        [image setTemplate:true];
+        self.statusItem.image = image;
         self.statusItem.title = nil;
     }
 }

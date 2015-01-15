@@ -10,11 +10,13 @@
 
 
 static NSString * const SFYPlayerStatePreferenceKey = @"ShowPlayerState";
+static NSString * const SFYHideIfStoppedPreferenceKey = @"HideIfStopped";
 
 
 @interface SFYAppDelegate ()
 
 @property (nonatomic, strong) NSMenuItem *playerStateMenuItem;
+@property (nonatomic, strong) NSMenuItem *hideIfStoppedMenuItem;
 @property (nonatomic, strong) NSStatusItem *statusItem;
 
 @end
@@ -29,9 +31,13 @@ static NSString * const SFYPlayerStatePreferenceKey = @"ShowPlayerState";
     
     NSMenu *menu = [[NSMenu alloc] initWithTitle:@""];
     
-    self.playerStateMenuItem = [[NSMenuItem alloc] initWithTitle:[self determinePlayerStateMenuItemTitle] action:@selector(togglePlayerStateVisibility) keyEquivalent:@""];
+    self.playerStateMenuItem = [[NSMenuItem alloc] initWithTitle:@"Hide player state" action:@selector(togglePlayerStateVisibility) keyEquivalent:@""];
+    self.hideIfStoppedMenuItem = [[NSMenuItem alloc] initWithTitle:@"Hide if stopped" action:@selector(toggleHideIfStoppedVisibility) keyEquivalent:@""];
+    [self setMenuItemCheck:self.playerStateMenuItem withValue:![self getPlayerStateVisibility]];
+    [self setMenuItemCheck:self.hideIfStoppedMenuItem withValue:[self getHideIfStopped]];
     
     [menu addItem:self.playerStateMenuItem];
+    [menu addItem:self.hideIfStoppedMenuItem];
     [menu addItemWithTitle:NSLocalizedString(@"Quit", nil) action:@selector(quit) keyEquivalent:@"q"];
 
     [self.statusItem setMenu:menu];
@@ -47,12 +53,13 @@ static NSString * const SFYPlayerStatePreferenceKey = @"ShowPlayerState";
 {
     NSString *trackName = [[self executeAppleScript:@"get name of current track"] stringValue];
     NSString *artistName = [[self executeAppleScript:@"get artist of current track"] stringValue];
+    NSString *playerState = [self determinePlayerStateText];
+    BOOL shouldHide = [self getHideIfStopped] && ![playerState isEqualToString:@"Playing"];
     
-    if (trackName && artistName) {
+    if (trackName && artistName && !shouldHide) {
         NSString *titleText = [NSString stringWithFormat:@"%@ - %@", trackName, artistName];
         
         if ([self getPlayerStateVisibility]) {
-            NSString *playerState = [self determinePlayerStateText];
             titleText = [NSString stringWithFormat:@"%@ (%@)", titleText, playerState];
         }
         
@@ -94,12 +101,7 @@ static NSString * const SFYPlayerStatePreferenceKey = @"ShowPlayerState";
 - (void)togglePlayerStateVisibility
 {
     [self setPlayerStateVisibility:![self getPlayerStateVisibility]];
-    self.playerStateMenuItem.title = [self determinePlayerStateMenuItemTitle];
-}
-
-- (NSString *)determinePlayerStateMenuItemTitle
-{
-    return [self getPlayerStateVisibility] ? NSLocalizedString(@"Hide player state", nil) : NSLocalizedString(@"Show player state", nil);
+    [self setMenuItemCheck:self.playerStateMenuItem withValue:![self getPlayerStateVisibility]];
 }
 
 - (NSString *)determinePlayerStateText
@@ -120,6 +122,31 @@ static NSString * const SFYPlayerStatePreferenceKey = @"ShowPlayerState";
     return playerStateText;
 }
 
+#pragma mark - Hide if stopped
+- (BOOL)getHideIfStopped
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:SFYHideIfStoppedPreferenceKey];
+}
+
+- (void)setHideIfStopped:(BOOL)hide
+{
+    [[NSUserDefaults standardUserDefaults] setBool:hide forKey:SFYHideIfStoppedPreferenceKey];
+}
+
+- (void)toggleHideIfStoppedVisibility
+{
+    [self setHideIfStopped:![self getHideIfStopped]];
+    [self setMenuItemCheck:self.hideIfStoppedMenuItem withValue:[self getHideIfStopped]];
+}
+
+- (void)setMenuItemCheck:(NSMenuItem *)item withValue: (BOOL)value
+{
+    if(value) {
+        [item setState:NSOnState];
+    } else {
+        [item setState:NSOffState];
+    }
+}
 
 #pragma mark - Quit
 

@@ -11,11 +11,14 @@
 
 static NSString * const SFYPlayerStatePreferenceKey = @"ShowPlayerState";
 static NSString * const SFYPlayerDockIconPreferenceKey = @"YES";
+static NSString * const SFYPlayerTrackTitlePreferenceKey = @"YES";
 
 @interface SFYAppDelegate ()
 
 @property (nonatomic, strong) NSMenuItem *playerStateMenuItem;
 @property (nonatomic, strong) NSMenuItem *dockIconMenuItem;
+@property (nonatomic, strong) NSMenuItem *trackTitleMenuItem;       // TOGGLE
+@property (nonatomic, strong) NSMenuItem *trackInformationMenuItem; // SONG INFORMATION
 @property (nonatomic, strong) NSStatusItem *statusItem;
 
 @end
@@ -36,40 +39,86 @@ static NSString * const SFYPlayerDockIconPreferenceKey = @"YES";
     
     self.dockIconMenuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Hide Dock Icon", nil) action:@selector(toggleDockIconVisibility) keyEquivalent:@""];
     
+    self.trackTitleMenuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Hide Track Info in Bar", nil) action:@selector(toggleTrackTitleVisibility) keyEquivalent:@""];
+    
+    //[menu addItem:self.trackInformationMenuItem];
     [menu addItem:self.playerStateMenuItem];
     [menu addItem:self.dockIconMenuItem];
+    [menu addItem:self.trackTitleMenuItem];
     [menu addItemWithTitle:NSLocalizedString(@"Quit", nil) action:@selector(quit) keyEquivalent:@"q"];
 
     [self.statusItem setMenu:menu];
     
-    [self setStatusItemTitle];
+    [self setStatusItemIcon];
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setStatusItemTitle) userInfo:nil repeats:YES];
 }
 
-#pragma mark - Setting title text
+#pragma mark - Setting statusItem icon
+- (void)setStatusItemIcon
+{
+    NSImage *image = [NSImage imageNamed:@"status_icon"];
+    [image setTemplate:true];
+    self.statusItem.image = image;
+    self.statusItem.title = nil;
+}
 
+#pragma mark - Setting statusItem title
 - (void)setStatusItemTitle
 {
-    NSString *trackName = [[self executeAppleScript:@"get name of current track"] stringValue];
-    NSString *artistName = [[self executeAppleScript:@"get artist of current track"] stringValue];
-    
-    if (trackName && artistName) {
-        NSString *titleText = [NSString stringWithFormat:@"%@ - %@", trackName, artistName];
+    NSString *titleText = [self determineTrackTitle];
+    if (titleText) {
         
         if ([self getPlayerStateVisibility]) {
             NSString *playerState = [self determinePlayerStateText];
             titleText = [NSString stringWithFormat:@"%@ (%@)", titleText, playerState];
         }
-        
-        self.statusItem.image = nil;
-        self.statusItem.title = titleText;
+        if ([self getTrackTitleVisibility]){
+            self.statusItem.image = nil;
+            self.statusItem.title = titleText;
+        }
+        else {
+            [self setStatusItemIcon];
+            // here you could add a new cell with the track title information
+            // if you wished (future)
+        }
     }
     else {
-        NSImage *image = [NSImage imageNamed:@"status_icon"];
-        [image setTemplate:true];
-        self.statusItem.image = image;
-        self.statusItem.title = nil;
+        [self setStatusItemIcon];
     }
+
+}
+
+#pragma mark - Display title in menu bar BOOL
+- (BOOL)getTrackTitleVisibility
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:SFYPlayerTrackTitlePreferenceKey];
+}
+
+- (NSString *)determineTrackTitle
+{
+    NSString *trackName = [[self executeAppleScript:@"get name of current track"] stringValue];
+    NSString *artistName = [[self executeAppleScript:@"get artist of current track"] stringValue];
+    if (trackName && artistName) {
+        NSString *titleText = [NSString stringWithFormat:@"%@ - %@", trackName, artistName];
+        return titleText;
+    }
+    return nil;
+}
+
+- (void)setTrackTitleVisibility:(BOOL)visible
+{
+    [[NSUserDefaults standardUserDefaults] setBool:visible forKey:SFYPlayerTrackTitlePreferenceKey];
+}
+
+- (void)toggleTrackTitleVisibility
+{
+    [self setTrackTitleVisibility:![self getTrackTitleVisibility]];
+    self.trackTitleMenuItem.title = [self determineTrackTitleMenuItemTitle];
+}
+
+- (NSString *)determineTrackTitleMenuItemTitle
+{
+    return [self getTrackTitleVisibility] ? NSLocalizedString(@"Hide Track Info in Bar", nil) : NSLocalizedString(@"Show Track Info in Bar", nil);
 }
 
 #pragma mark - Executing AppleScript

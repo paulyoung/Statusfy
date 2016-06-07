@@ -29,6 +29,7 @@ static NSString * const SFYPlayerDockIconPreferenceKey = @"YES";
     
     self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     self.statusItem.highlightMode = YES;
+    self.statusItem.button.font = [NSFont systemFontOfSize:12.f];
     
     NSMenu *menu = [[NSMenu alloc] initWithTitle:@""];
     

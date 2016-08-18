@@ -26,22 +26,22 @@ static NSString * const SFYPlayerDockIconPreferenceKey = @"YES";
 {
     //Initialize the variable the getDockIconVisibility method checks
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:SFYPlayerDockIconPreferenceKey];
-    
+
     self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     self.statusItem.highlightMode = YES;
-    
+
     NSMenu *menu = [[NSMenu alloc] initWithTitle:@""];
-    
+
     self.playerStateMenuItem = [[NSMenuItem alloc] initWithTitle:[self determinePlayerStateMenuItemTitle] action:@selector(togglePlayerStateVisibility) keyEquivalent:@""];
-    
+
     self.dockIconMenuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Hide Dock Icon", nil) action:@selector(toggleDockIconVisibility) keyEquivalent:@""];
-    
+
     [menu addItem:self.playerStateMenuItem];
     [menu addItem:self.dockIconMenuItem];
     [menu addItemWithTitle:NSLocalizedString(@"Quit", nil) action:@selector(quit) keyEquivalent:@"q"];
 
     [self.statusItem setMenu:menu];
-    
+
     [self setStatusItemTitle];
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setStatusItemTitle) userInfo:nil repeats:YES];
 }
@@ -52,15 +52,15 @@ static NSString * const SFYPlayerDockIconPreferenceKey = @"YES";
 {
     NSString *trackName = [[self executeAppleScript:@"get name of current track"] stringValue];
     NSString *artistName = [[self executeAppleScript:@"get artist of current track"] stringValue];
-    
+
     if (trackName && artistName) {
         NSString *titleText = [NSString stringWithFormat:@"%@ - %@", trackName, artistName];
-        
+
         if ([self getPlayerStateVisibility]) {
             NSString *playerState = [self determinePlayerStateText];
             titleText = [NSString stringWithFormat:@"%@ (%@)", titleText, playerState];
         }
-        
+
         self.statusItem.image = nil;
         self.statusItem.title = titleText;
     }
@@ -109,7 +109,7 @@ static NSString * const SFYPlayerDockIconPreferenceKey = @"YES";
 {
     NSString *playerStateText = nil;
     NSString *playerStateConstant = [[self executeAppleScript:@"get player state"] stringValue];
-    
+
     if ([playerStateConstant isEqualToString:@"kPSP"]) {
         playerStateText = NSLocalizedString(@"Playing", nil);
     }
@@ -119,7 +119,7 @@ static NSString * const SFYPlayerDockIconPreferenceKey = @"YES";
     else {
         playerStateText = NSLocalizedString(@"Stopped", nil);
     }
-    
+
     return playerStateText;
 }
 
@@ -139,7 +139,7 @@ static NSString * const SFYPlayerDockIconPreferenceKey = @"YES";
 {
     [self setDockIconVisibility:![self getDockIconVisibility]];
     self.dockIconMenuItem.title = [self determineDockIconMenuItemTitle];
-    
+
     if(![self getDockIconVisibility])
     {
         //Apple recommended method to show and hide dock icon

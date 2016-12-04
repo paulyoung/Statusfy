@@ -26,7 +26,10 @@ static NSString * const SFYPlayerDockIconPreferenceKey = @"YES";
 {
     //Initialize the variable the getDockIconVisibility method checks
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:SFYPlayerDockIconPreferenceKey];
-    
+  
+    // Default to hidden dock icon
+    [NSApp setActivationPolicy: NSApplicationActivationPolicyAccessory];
+  
     self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     self.statusItem.highlightMode = YES;
     

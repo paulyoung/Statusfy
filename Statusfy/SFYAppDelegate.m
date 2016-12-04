@@ -57,15 +57,28 @@ static NSString * const SFYPlayerDockIconPreferenceKey = @"YES";
     NSString *artistName = [[self executeAppleScript:@"get artist of current track"] stringValue];
     
     if (trackName && artistName) {
-        NSString *titleText = [NSString stringWithFormat:@"%@ - %@", trackName, artistName];
-        
+        NSString *titleText = [NSString stringWithFormat:@"%@ %@", trackName, artistName];
+      
+      NSRange range = [titleText rangeOfString:artistName];
+      NSColor *color = [NSColor colorWithWhite:0.5 alpha:1.0];
+      NSDictionary *defaultAttributes = [NSDictionary
+                                  dictionaryWithObjectsAndKeys:
+                                  [NSColor colorWithWhite:1.0 alpha:1.0],NSForegroundColorAttributeName,
+                                  [NSFont menuBarFontOfSize:12], NSFontAttributeName,
+                                  nil];
+      
+      NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:titleText attributes:defaultAttributes];
+
+      [attString addAttribute:NSForegroundColorAttributeName value:color range:range];
+      
         if ([self getPlayerStateVisibility]) {
-            NSString *playerState = [self determinePlayerStateText];
-            titleText = [NSString stringWithFormat:@"%@ (%@)", titleText, playerState];
+          NSString *formattedString = [NSString stringWithFormat:@" (%@)", [self determinePlayerStateText]];
+            NSAttributedString *playerState = [[NSAttributedString alloc] initWithString:formattedString attributes:defaultAttributes];
+          [attString appendAttributedString:playerState];
         }
         
         self.statusItem.image = nil;
-        self.statusItem.title = titleText;
+        [self.statusItem setAttributedTitle:attString];
     }
     else {
         NSImage *image = [NSImage imageNamed:@"status_icon"];

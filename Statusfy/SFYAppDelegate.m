@@ -54,7 +54,7 @@ static NSString * const SFYPlayerDockIconPreferenceKey = @"YES";
     NSString *artistName = [[self executeAppleScript:@"get artist of current track"] stringValue];
     
     if (trackName && artistName) {
-        NSString *titleText = [NSString stringWithFormat:@"%@ - %@", trackName, artistName];
+        NSString *titleText = [NSString stringWithFormat:@"%@ - %@", artistName, trackName];
         
         if ([self getPlayerStateVisibility]) {
             NSString *playerState = [self determinePlayerStateText];

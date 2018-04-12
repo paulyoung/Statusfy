@@ -44,6 +44,8 @@ static NSString * const SFYPlayerDockIconPreferenceKey = @"YES";
     
     [self setStatusItemTitle];
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setStatusItemTitle) userInfo:nil repeats:YES];
+
+    [self toggleDockIconVisibility];
 }
 
 #pragma mark - Setting title text
